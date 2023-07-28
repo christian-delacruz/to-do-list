@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs') %>
+<div class="container">
+    <div id="title-container" class="text-center">
+        <h1>Work List</h1>
+    </div>
+    <div id="tasks-container">
+        <form id="new-task-form" class="mb-3" action="/addWorkTask" method="post">
+            <div class="input-group">
+                <input type="text" id="new-task-name" name="newWorkTask" class="form-control" placeholder="New task" required>
+                <button type="submit" class="btn btn-primary btn-circle">+</button>
+            </div>
+        </form>
+        <table id="tasks-table" class="table">
+            <tbody>
+                <% tasks.forEach(function(task) { %>
+                    <tr>
+                        <td class="list-item">
+                            <input class="form-check-input flex-shrink-0" type="checkbox" value="" onchange="toggleStrikethrough(this)">
+                            <span class="pt-1 form-checked-content task-content">
+                                <strong><%= task %></strong>
+                            </span>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>
+
